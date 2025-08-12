@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Addresses, Domain Names, and URLs - Study Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.6em;
+            margin: 25px 0 15px 0;
+            position: relative;
+        }
+
+        h3:before {
+            content: "▶";
+            color: #667eea;
+            margin-right: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .highlight-box h4 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block:before {
+            content: "CODE";
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 0.8em;
+            color: #95a5a6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #ff7675, #fd79a8);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(255, 118, 117, 0.3);
+        }
+
+        .warning-box:before {
+            content: "⚠️ ";
+            font-size: 1.2em;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(116, 185, 255, 0.3);
+        }
+
+        .info-box:before {
+            content: "ℹ️ ";
+            font-size: 1.2em;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            position: relative;
+        }
+
+        ul li:before {
+            content: "🔹";
+            position: absolute;
+            left: -25px;
+        }
+
+        .interactive-element {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-element:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Internet Fundamentals</h1>
+            <p>A Comprehensive Guide to IP Addresses, Domain Names, and URLs</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>🌐 IP Addresses</h2>
+                
+                <div class="highlight-box">
+                    <h4>What is an IP Address?</h4>
+                    <p>An <strong>IP address</strong> (Internet Protocol address) is a computer's unique address on the internet, like a house's unique address in the world.</p>
+                </div>
+
+                <h3>Key Characteristics</h3>
+                <ul>
+                    <li>Usually represented numerically like <code>198.51.100.7</code></li>
+                    <li>32 bits divided into four 8-bit groups</li>
+                    <li>Each group written as decimal number (0-255)</li>
+                </ul>
+
+                <div class="code-block">
+198.51.100.7 in binary:
+11000110.00110011.01100100.00000111
+
+0 = 00000000
+255 = 11111111
+                </div>
+
+                <h3>IPv4 vs IPv6</h3>
+                <table>
+                    <tr>
+                        <th>Version</th>
+                        <th>Bits</th>
+                        <th>Total Addresses</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>IPv4</td>
+                        <td>32</td>
+                        <td>~4 billion (2³²)</td>
+                        <td>Insufficient</td>
+                    </tr>
+                    <tr>
+                        <td>IPv6</td>
+                        <td>128</td>
+                        <td>3.4 × 10³⁸ (2¹²⁸)</td>
+                        <td>Current solution</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <strong>Internet Communication:</strong> Computers communicate by sending packets containing To/From IP addresses, data, and configuration information.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🏷️ Domain Names and DNS</h2>
+
+                <div class="highlight-box">
+                    <h4>Why Domain Names?</h4>
+                    <p>IP addresses like <code>216.58.193.206</code> are hard to remember and can change. Domain names like <code>google.com</code> are easier to use!</p>
+                </div>
+
+                <h3>Domain Name System (DNS)</h3>
+                <p>The DNS process converts domain names to IP addresses:</p>
+                <ol>
+                    <li>Computer wants to visit <code>cnn.com</code></li>
+                    <li>Sends request to DNS server to lookup IP address</li>
+                    <li>DNS server returns IP address</li>
+                    <li>Computer can now communicate with CNN</li>
+                </ol>
+
+                <div class="info-box">
+                    <strong>Root Servers:</strong> 13 main DNS servers exist worldwide, maintained by organizations like Verisign, USC, University of Maryland, and NASA.
+                </div>
+
+                <h3>Domain Registration</h3>
+                <ul>
+                    <li>Anyone can register unused domain names</li>
+                    <li>Yearly fees required for registration</li>
+                    <li>Information publicly available via ICANN's Whois service</li>
+                    <li>Web hosting companies often manage DNS updates</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>🏗️ Domain Hierarchy</h2>
+
+                <h3>Top-Level Domains (TLD)</h3>
+                <table>
+                    <tr>
+                        <th>TLD</th>
+                        <th>Type</th>
+                        <th>Percentage</th>
+                        <th>Examples</th>
+                    </tr>
+                    <tr>
+                        <td>.com</td>
+                        <td>Commercial</td>
+                        <td>77%</td>
+                        <td>microsoft.com, amazon.com</td>
+                    </tr>
+                    <tr>
+                        <td>.net</td>
+                        <td>Network</td>
+                        <td>10%</td>
+                        <td>comcast.net, sourceforge.net</td>
+                    </tr>
+                    <tr>
+                        <td>.org</td>
+                        <td>Organization</td>
+                        <td>7%</td>
+                        <td>wikipedia.org, npr.org</td>
+                    </tr>
+                    <tr>
+                        <td>.edu</td>
+                        <td>Educational</td>
+                        <td>-</td>
+                        <td>harvard.edu, ucla.edu</td>
+                    </tr>
+                    <tr>
+                        <td>.gov</td>
+                        <td>Government</td>
+                        <td>-</td>
+                        <td>cdc.gov, irs.gov</td>
+                    </tr>
+                </table>
+
+                <h3>Domain Structure</h3>
+                <div class="code-block">
+cs.stanford.edu
+│     │       │
+│     │       └── Top-level domain (.edu)
+│     └────────── Second-level (stanford)
+└─────────────── Third-level (cs)
+                </div>
+
+                <div class="warning-box">
+                    <strong>Security Alert:</strong> Domain structure reads RIGHT-TO-LEFT! Scammers exploit this with fake domains like <code>bankofamerica.xyz.com</code> which actually belongs to <code>xyz.com</code>.
+                </div>
+
+                <h3>Country Codes</h3>
+                <ul>
+                    <li><code>.uk</code> - United Kingdom</li>
+                    <li><code>.ru</code> - Russia</li>
+                    <li><code>.de</code> - Germany</li>
+                    <li>Custom TLDs: <code>.church</code>, <code>.pizza</code>, <code>.music</code></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>🔗 URLs (Uniform Resource Locator)</h2>
+
+                <div class="highlight-box">
+                    <h4>What is a URL?</h4>
+                    <p>A URL specifies the location of a web resource (HTML files, images, videos, stylesheets, etc.) on the web.</p>
+                </div>
+
+                <h3>URL Components</h3>
+                <div class="code-block">
+https://www.youtube.com/watch?v=uu7XCEMdSHg#History
+│     │              │         │               │
+│     │              │         │               └── Fragment
+│     │              │         └──────────────── Query String
+│     │              └────────────────────────── Path
+│     └───────────────────────────────────────── Hostname
+└─────────────────────────────────────────────── Scheme
+                </div>
+
+                <h3>Component Details</h3>
+                <ul>
+                    <li><strong>Scheme:</strong> Protocol (http, https, mailto, file)</li>
+                    <li><strong>Hostname:</strong> Complete domain name</li>
+                    <li><strong>Path:</strong> Specific resource location</li>
+                    <li><strong>Query String:</strong> Data for the server (after ?)</li>
+                    <li><strong>Fragment:</strong> Location within page (after #)</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Browser Behavior:</strong> Modern browsers hide schemes and "www" for cleaner display but still use complete URLs for requests.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>❌ Webpage Errors</h2>
+
+                <h3>Types of Errors</h3>
+
+                <div class="interactive-element" onclick="this.style.background='#ff7675'; this.style.color='white';">
+                    <strong>Domain Not Found</strong><br>
+                    Domain name not registered → "Website cannot be found"
+                </div>
+
+                <div class="interactive-element" onclick="this.style.background='#fdcb6e'; this.style.color='white';">
+                    <strong>Server Not Responding</strong><br>
+                    Valid domain but server down → "Website not responding"
+                </div>
+
+                <div class="interactive-element" onclick="this.style.background='#fd79a8'; this.style.color='white';">
+                    <strong>404 Error</strong><br>
+                    Server reachable but page not found → "Page not found"
+                </div>
+
+                <h3>Linkrot</h3>
+                <p>Once-valid links that now return 404 errors due to content removal or reorganization.</p>
+
+                <div class="info-box">
+                    <strong>Solution:</strong> The Internet Archive's Wayback Machine preserves billions of webpages, allowing you to see how URLs looked at different times in history.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📝 Practice Questions</h2>
+
+                <h3>Quick Quiz</h3>
+                <div class="interactive-element" onclick="alert('Correct! IPv4 uses 32-bit addresses.')">
+                    <strong>Q:</strong> What is the size of an IPv4 address?<br>
+                    <strong>Click for answer</strong>
+                </div>
+
+                <div class="interactive-element" onclick="alert('Correct! HTTPS provides secure encrypted connections.')">
+                    <strong>Q:</strong> Which scheme provides secure HTTP connections?<br>
+                    <strong>Click for answer</strong>
+                </div>
+
+                <div class="interactive-element" onclick="alert('Correct! DNS converts domain names to IP addresses.')">
+                    <strong>Q:</strong> What is the primary role of a DNS server?<br>
+                    <strong>Click for answer</strong>
+                </div>
+
+                <h3>Valid IPv4 Addresses</h3>
+                <ul>
+                    <li>✅ <code>194.16.125.228</code> - Valid</li>
+                    <li>✅ <code>47.179.220.122</code> - Valid</li>
+                    <li>❌ <code>16.76.195.140.164</code> - Too many octets</li>
+                    <li>❌ <code>D71.AAFEF9.A34</code> - Hexadecimal format</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>🎯 Key Takeaways</h2>
+                <div class="highlight-box">
+                    <h4>Essential Concepts</h4>
+                    <ol>
+                        <li><strong>IP addresses</strong> are the fundamental addressing system of the internet</li>
+                        <li><strong>Domain names</strong> provide human-readable alternatives to IP addresses</li>
+                        <li><strong>DNS</strong> translates domain names to IP addresses</li>
+                        <li><strong>URLs</strong> specify exact locations of web resources</li>
+                        <li><strong>Web errors</strong> have different causes and meanings</li>
+                        <li>Understanding these concepts is essential for web development and troubleshooting</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📚 Study Guide: IP Addresses, Domain Names, and URLs</p>
+            <p>Created from zyBooks Academic Material</p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive effects
+        document.querySelectorAll('.section').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add click effects to code blocks
+        document.querySelectorAll('.code-block').forEach(block => {
+            block.addEventListener('click', function() {
+                this.style.background = '#3498db';
+                setTimeout(() => {
+                    this.style.background = '#2c3
