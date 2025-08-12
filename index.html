@@ -496,7 +496,7 @@ https://www.youtube.com/watch?v=uu7XCEMdSHg#History
 
         <div class="footer">
             <p>📚 Study Guide: IP Addresses, Domain Names, and URLs</p>
-            <p>Created from zyBooks Academic Material</p>
+            <p>Comprehensive Internet Fundamentals Reference</p>
         </div>
     </div>
 
@@ -517,4 +517,30 @@ https://www.youtube.com/watch?v=uu7XCEMdSHg#History
             block.addEventListener('click', function() {
                 this.style.background = '#3498db';
                 setTimeout(() => {
-                    this.style.background = '#2c3
+                    this.style.background = '#2c3e50';
+                }, 500);
+            });
+        });
+
+        // Add print functionality
+        function printPage() {
+            window.print();
+        }
+
+        // Add copy to clipboard for code blocks
+        document.querySelectorAll('.code-block').forEach(block => {
+            block.style.cursor = 'pointer';
+            block.title = 'Click to copy';
+            block.addEventListener('click', function() {
+                navigator.clipboard.writeText(this.textContent).then(() => {
+                    const originalBg = this.style.background;
+                    this.style.background = '#27ae60';
+                    setTimeout(() => {
+                        this.style.background = originalBg;
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
